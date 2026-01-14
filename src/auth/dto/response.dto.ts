@@ -9,4 +9,7 @@ export class ResponseDto {
 
     @Expose()
     _id:string
+
+    @Expose()
+    role:'user' | 'admin'
 }
