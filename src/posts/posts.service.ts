@@ -17,7 +17,7 @@ export class PostsService {
     return newPost
   }
 
-  findAllPost(postSearchParam:PostSearchParam) {
+  findAllPost(postQueryDto:PostSearchParam) {
     return this.postModel.find()
   }
 
