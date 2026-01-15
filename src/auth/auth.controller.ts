@@ -6,7 +6,7 @@ import { ResponseDto } from './dto/response.dto';
 import { TransformDto } from 'src/_cores/interceptors/response.interceptor';
 import { SignInDto } from './dto/sign-in.dto';
 import { CurrentUser } from 'src/_cores/decorators/current-user.decorator';
-import { UserDocument } from './schemas/user.schema';
+import { UserDocument } from '../users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/_cores/guards/jwt-auth.guard';
 import { Roles } from 'src/_cores/decorators/role.decorator';
 import { RolesGuard } from 'src/_cores/guards/role.guard';
@@ -16,7 +16,7 @@ import { RolesGuard } from 'src/_cores/guards/role.guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Roles('user')
+  @Roles('admin')
   @UseGuards(JwtAuthGuard,RolesGuard)
   @Post('sign-up')
   signUp(@Body() SignUpDto: SignUpDto) {

@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, ForbiddenException, Injectable 
 import { SignUpDto } from './dto/sign-up.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from './schemas/user.schema';
+import { User, UserDocument } from '../users/schemas/user.schema';
 import { Model } from 'mongoose';
 import bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt';
