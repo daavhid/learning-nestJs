@@ -1,98 +1,293 @@
+# NestJS Real-Time Chat Application
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+<p align="center">
+  A comprehensive real-time chat application built with NestJS, featuring social networking capabilities, WebSocket communication, and comprehensive API documentation.
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+<p align="center">
+  <a href="https://nestjs.com" target="_blank"><img src="https://img.shields.io/badge/built%20with-NestJS-red.svg" alt="Built with NestJS" /></a>
+  <a href="https://www.mongodb.com" target="_blank"><img src="https://img.shields.io/badge/database-MongoDB-green.svg" alt="MongoDB" /></a>
+  <a href="https://socket.io" target="_blank"><img src="https://img.shields.io/badge/websocket-Socket.IO-black.svg" alt="Socket.IO" /></a>
+  <a href="https://swagger.io" target="_blank"><img src="https://img.shields.io/badge/docs-Swagger-blue.svg" alt="Swagger" /></a>
+</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📋 Table of Contents
 
-## Project setup
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Environment Setup](#-environment-setup)
+- [Running the Application](#-running-the-application)
+- [API Documentation](#-api-documentation)
+- [Project Structure](#-project-structure)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-```bash
-$ npm install
+## ✨ Features
+
+### 🔐 Authentication & Authorization
+- JWT-based authentication
+- WebSocket authentication guards
+- Role-based access control
+- Secure password hashing
+
+### 💬 Real-Time Communication
+- WebSocket-based chat system
+- Real-time messaging in conversations
+- Live notifications
+- Online/offline status tracking
+
+### 👥 Social Features
+- User profiles with avatars and cover photos
+- Friend request system
+- User search and discovery
+- Follow/unfollow functionality
+
+### 📝 Content Management
+- Post creation and management
+- Comment system with threading
+- Reaction system (likes, etc.)
+- Media upload with Cloudinary integration
+
+### 🏠 Conversation Management
+- One-on-one and group conversations
+- Conversation member management
+- Admin controls for groups
+- Message history and search
+
+### 📊 Advanced Features
+- Pagination for large datasets
+- File upload and media management
+- Comprehensive API documentation
+- Code documentation with Compodoc
+- ESLint code quality enforcement
+
+## 🛠 Tech Stack
+
+### Backend
+- **Framework**: [NestJS](https://nestjs.com/) - A progressive Node.js framework
+- **Language**: TypeScript
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT (JSON Web Tokens)
+- **Real-time**: Socket.IO for WebSocket communication
+- **Validation**: class-validator and class-transformer
+- **Documentation**: Swagger/OpenAPI and Compodoc
+
+### Development Tools
+- **Code Quality**: ESLint, Prettier
+- **Testing**: Jest
+- **Process Management**: PM2 (for production)
+- **Containerization**: Docker & Docker Compose
+- **API Testing**: Postman/Insomnia
+
+### External Services
+- **Media Storage**: Cloudinary
+- **Database**: MongoDB Atlas (cloud) or local MongoDB
+
+## 📋 Prerequisites
+
+Before running this application, make sure you have the following installed:
+
+- **Node.js** (v18 or higher)
+- **npm** or **yarn** package manager
+- **MongoDB** (local installation or MongoDB Atlas)
+- **Git** for version control
+
+## 🚀 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd intro-concepts
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+## 🔧 Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Database
+MONGODB_URI=mongodb://localhost:27017/chat-app
+
+# JWT
+JWT_SECRET_ACCESS_TOKEN=your-jwt-secret-here
+JWT_SECRET_REFRESH_TOKEN=your-refresh-jwt-secret-here
+
+# Cloudinary (for media uploads)
+CLOUDINARY_NAME=your-cloudinary-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+
+# Application
+PORT=5000
+NODE_ENV=development
+
+# Frontend URL (for CORS)
+FRONTEND_URL=http://localhost:3000
 ```
 
-## Compile and run the project
+## ▶️ Running the Application
 
+### Development Mode
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Start with hot reload
+npm run start:dev
 ```
 
-## Run tests
-
+### Production Mode
 ```bash
-# unit tests
-$ npm run test
+# Build the application
+npm run build
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Start the production server
+npm run start:prod
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+### Docker
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Start with Docker Compose
+docker-compose up -d
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 📚 API Documentation
 
-## Resources
+### Swagger UI
+Once the application is running, visit:
+- **API Docs**: `http://localhost:5000/api-docs`
+- Interactive API testing interface with all endpoints documented
 
-Check out a few resources that may come in handy when working with NestJS:
+### Code Documentation
+```bash
+# Generate and serve code documentation
+npm run compodoc
+# Visit: http://localhost:8080
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 📁 Project Structure
 
-## Support
+```
+src/
+├── _cores/                    # Core application modules
+│   ├── decorators/           # Custom decorators (object-id, current-user, etc.)
+│   ├── guards/               # Authentication & authorization guards
+│   ├── interceptors/         # Response transformation interceptors
+│   ├── middlewares/          # Custom middlewares
+│   └── swagger/              # Custom Swagger decorators
+├── app/                      # Main application module
+├── auth/                     # Authentication module
+├── users/                    # User management
+├── posts/                    # Posts and content management
+├── comments/                 # Comments system
+├── conversations/            # Chat conversations
+├── messages/                 # Real-time messaging
+├── notifications/            # Notification system
+├── friend-request/           # Friend request functionality
+├── cloudinary/               # Media upload service
+├── common/                   # Shared utilities and DTOs
+└── main.ts                   # Application entry point
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+test/                         # Test files
+├── app.e2e-spec.ts
+└── jest-e2e.json
+```
 
-## Stay in touch
+## 🧪 Testing
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Run unit tests
+npm run test
 
-## License
+# Run e2e tests
+npm run test:e2e
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Run tests with coverage
+npm run test:cov
+
+# Run linting
+npm run lint
+```
+
+## 🚀 Deployment
+
+### Manual Deployment
+1. Build the application:
+   ```bash
+   npm run build
+   ```
+
+2. Start with PM2:
+   ```bash
+   npm install -g pm2
+   pm2 start dist/main.js --name "chat-app"
+   ```
+
+### Docker Deployment
+```bash
+# Build and run with Docker
+docker build -t nestjs-chat-app .
+docker run -p 5000:5000 nestjs-chat-app
+```
+
+### Cloud Deployment
+- **Railway**: Connect your GitHub repo for automatic deployments
+- **Heroku**: Use the Heroku CLI or GitHub integration
+- **AWS**: Deploy to EC2, ECS, or use Elastic Beanstalk
+- **Vercel**: For serverless deployment (requires adapter)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow the existing code style
+- Write tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [NestJS](https://nestjs.com/) - The framework that makes building scalable server applications easy
+- [Socket.IO](https://socket.io/) - Real-time bidirectional communication
+- [MongoDB](https://www.mongodb.com/) - NoSQL database for flexible data storage
+- [Swagger](https://swagger.io/) - API documentation and testing
+- [Cloudinary](https://cloudinary.com/) - Media management and optimization
+
+## 📞 Support
+
+If you have any questions or need help with the project:
+
+- Open an issue on GitHub
+- Check the [NestJS Documentation](https://docs.nestjs.com)
+- Join the [NestJS Discord](https://discord.gg/G7Qnnhy)
+
+---
+
+<p align="center">
+  Built with ❤️ using <a href="https://nestjs.com">NestJS</a>
+</p>
